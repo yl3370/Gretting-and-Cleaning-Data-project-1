@@ -48,3 +48,4 @@ colnames(datawithactivity)= colNames
 tidydata<- aggregate(datawithactivity[, names(datawithactivity) != c("activity id","subject id", "activity type")], by= list("activity id"= datawithactivity$`activity id`, "subject id" =datawithactivity$`subject id`), mean)
 finaltidydata<- merge(tidydata,activity, by = "activity id", all.x = TRUE)
 finaltidydata<- finaltidydata[order(finaltidydata$`subject id`),]
+write.table(allData.mean, "tidy.txt", row.names = FALSE, quote = FALSE)
